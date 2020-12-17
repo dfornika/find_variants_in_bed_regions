@@ -25,6 +25,47 @@ optional arguments:
   --no-header
 ```
 
+## Example
+
+For an input file called `SAMPLE123_data.csv` with contents
+
+```
+date,temp_celsius,weight_kg
+2020-12-05,21.1,3.65
+2020-12-06,22.2,3.80
+2020-12-07,19.4,3.81
+```
+
+The command:
+
+```
+add_sample_id.py --sample-id-delimiter '_' --field-delimiter ',' --header-regex '^date' --no-header SAMPLE123_data.csv
+```
+
+...gives output:
+
+```
+SAMPLE123,2020-12-05,21.1,3.65
+SAMPLE123,2020-12-06,22.2,3.80
+SAMPLE123,2020-12-07,19.4,3.81
+```
+
+..and this command:
+
+
+```
+add_sample_id.py --sample-id-delimiter '_' --field-delimiter ',' --header-regex '^date' SAMPLE123_data.csv
+```
+
+...gives output:
+
+```
+sample_id,date,temp_celsius,weight_kg
+SAMPLE123,2020-12-05,21.1,3.65
+SAMPLE123,2020-12-06,22.2,3.80
+SAMPLE123,2020-12-07,19.4,3.81
+```
+
 # find_variants_in_bed_regions.py
 Take variants.tsv data from `stdin`, and print those that fall within the regions defined by a `.bed` file to `stdout`. Optionally filter by minimum and maximum alternate allele frequency.
 
