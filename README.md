@@ -4,6 +4,11 @@
 By default, the `variants.tsv` files produced by `ivar variants` do not include a field for the sample ID. That information is normally included in the filename.
 But if we want to concatenate many `variants.tsv` files together, that information is lost. This script takes the sample ID from the filename and adds an extra field
 
+This script is made to be as generic as possible, so it should be compatible with other tsv/csv files that have their sample ID as the first part of the filename but
+not in the body of the file. Use the `--sample-id-delimiter` flag to specify which character to split the filename on. The first element will be used as the sample ID after
+splitting with that character. Use the `--field-delimiter` flag to specify the delimiter used in the input file (`'\t'` for `.tsv`, `','` for `.csv`. Use the `--no-header`
+flag to suppress printing the header in the output. The header is identified using the `--header-regex`. For `ivar` `variants.tsv` files, use `^REGION` to match the header.
+
 ## Usage
 
 ```
